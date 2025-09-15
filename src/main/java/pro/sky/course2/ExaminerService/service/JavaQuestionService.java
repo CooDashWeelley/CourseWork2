@@ -38,4 +38,5 @@ public class JavaQuestionService implements QuestionService{
         return questions.get(random.nextInt(0, questions.size() - 1));
     }
 
+
 }

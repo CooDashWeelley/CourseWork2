@@ -14,14 +14,11 @@ import java.util.Collection;
 @RestController
 public class JavaQuestionController {
     private JavaQuestionService javaQuestionService;
-    private ExaminerServiceImpl examinerServiceImpl;
 
     public JavaQuestionController(
-            JavaQuestionService javaQuestionService,
-            ExaminerServiceImpl examinerServiceImpl
+            JavaQuestionService javaQuestionService
     ) {
         this.javaQuestionService = javaQuestionService;
-        this.examinerServiceImpl = examinerServiceImpl;
     }
 
     @GetMapping("/hello")
@@ -45,8 +42,4 @@ public class JavaQuestionController {
         return javaQuestionService.getAll();
     }
 
-    @GetMapping("/exam/get/{amount}")
-    public Collection<Question> exam(@RequestParam("amount") int amount) {
-        return examinerServiceImpl.getQuestions(amount);
-    }
 }
