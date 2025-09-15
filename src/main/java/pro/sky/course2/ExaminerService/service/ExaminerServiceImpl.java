@@ -9,7 +9,7 @@ import java.util.Collection;
 import java.util.List;
 
 @Service
-public class ExaminerServiceImpl implements ExaminerService{
+public class ExaminerServiceImpl implements ExaminerService {
     private QuestionService questionService;
 
     public ExaminerServiceImpl(QuestionService questionService) {
@@ -17,12 +17,12 @@ public class ExaminerServiceImpl implements ExaminerService{
     }
 
     @Override
-    public Collection<Question> getQuestions(int amount) {
-        if (amount > questionService.getAll().size()){
+    public List<Question> getQuestions(int amount) {
+        if (amount > questionService.getAll().size()) {
             throw new IllegalNumberOfQuestionException("Запрошено больше вопросов, чем есть в списке");
         }
         List<Question> examQuestions = new ArrayList<>();
-        for (int i = 0; i < amount; i++){
+        for (int i = 0; i < amount; i++) {
             Question question = questionService.getRandomQuestion();
             if (!examQuestions.contains(question)) {
                 examQuestions.add(question);
