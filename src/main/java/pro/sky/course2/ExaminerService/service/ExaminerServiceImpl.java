@@ -30,5 +30,4 @@ public class ExaminerServiceImpl implements ExaminerService {
         }
         return examQuestions;
     }
-
 }
