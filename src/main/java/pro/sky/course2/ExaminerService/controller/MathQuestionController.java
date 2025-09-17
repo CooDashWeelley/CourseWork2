@@ -9,8 +9,8 @@ import pro.sky.course2.ExaminerService.service.MathQuestionService;
 
 import java.util.Collection;
 
-@RestController
 @RequestMapping("/exam/math")
+@RestController
 public class MathQuestionController {
     private MathQuestionService service;
 

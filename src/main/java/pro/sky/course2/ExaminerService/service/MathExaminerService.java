@@ -8,22 +8,23 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class ExaminerServiceImpl implements ExaminerService {
-    private QuestionServiceInterface questionService;
+public class MathExaminerService implements ExaminerService {
+    private MathQuestionService service;
 
-    public ExaminerServiceImpl(QuestionServiceInterface questionService) {
-        this.questionService = questionService;
+    public MathExaminerService( MathQuestionService service) {
+        this.service = service;
+
     }
 
     @Override
     public List<Question> getQuestions(int amount) {
-        if (amount > questionService.getAll().size()) {
+        if (amount > service.getAll().size()) {
             throw new IllegalNumberOfQuestionException("Запрошено больше вопросов, чем есть в списке");
         }
         List<Question> examQuestions = new ArrayList<>();
 
         for (int i = 0; examQuestions.size() < amount; i++) {
-            Question question = questionService.getRandomQuestion();
+            Question question = service.getRandomQuestion();
             if (!examQuestions.contains(question)) {
                 examQuestions.add(question);
             }

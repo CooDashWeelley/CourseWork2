@@ -5,23 +5,29 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import pro.sky.course2.ExaminerService.domain.Question;
-import pro.sky.course2.ExaminerService.service.ExaminerServiceImpl;
+import pro.sky.course2.ExaminerService.service.JavaExaminerService;
+import pro.sky.course2.ExaminerService.service.MathExaminerService;
 
-import java.util.Collection;
+import java.util.List;
 
 @RestController
 @RequestMapping("/exam")
-
 public class ExamController {
-    private ExaminerServiceImpl examinerServiceImpl;
+    private JavaExaminerService javaExaminerService;
+    private MathExaminerService mathExaminerService;
 
-    public ExamController(ExaminerServiceImpl examinerServiceImpl) {
-        this.examinerServiceImpl = examinerServiceImpl;
+    public ExamController(JavaExaminerService javaExaminerService, MathExaminerService mathExaminerService) {
+        this.javaExaminerService = javaExaminerService;
+        this.mathExaminerService = mathExaminerService;
     }
 
-    @GetMapping("/get/{amount}")
-    public Collection<Question> exam(@PathVariable("amount") int amount) {
-        return examinerServiceImpl.getQuestions(amount);
+    @GetMapping("/java/get/{amount}")
+    public List<Question> examJava(@PathVariable("amount") int amount) {
+        return javaExaminerService.getQuestions(amount);
+    }
+    @GetMapping("/math/get/{amount}")
+    public List<Question> examMath(@PathVariable("amount") int amount) {
+        return mathExaminerService.getQuestions(amount);
     }
 
 }
