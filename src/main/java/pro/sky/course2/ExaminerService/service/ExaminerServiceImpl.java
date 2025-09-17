@@ -5,7 +5,6 @@ import pro.sky.course2.ExaminerService.domain.Question;
 import pro.sky.course2.ExaminerService.exception.IllegalNumberOfQuestionException;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 @Service
@@ -22,7 +21,8 @@ public class ExaminerServiceImpl implements ExaminerService {
             throw new IllegalNumberOfQuestionException("Запрошено больше вопросов, чем есть в списке");
         }
         List<Question> examQuestions = new ArrayList<>();
-        for (int i = 0; i < amount; i++) {
+
+        for (int i = 0; examQuestions.size() < amount; i++) {
             Question question = questionService.getRandomQuestion();
             if (!examQuestions.contains(question)) {
                 examQuestions.add(question);

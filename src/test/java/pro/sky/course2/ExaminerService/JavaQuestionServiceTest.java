@@ -4,9 +4,9 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import pro.sky.course2.ExaminerService.domain.Question;
+import pro.sky.course2.ExaminerService.exception.IncorrectValueException;
 import pro.sky.course2.ExaminerService.service.JavaQuestionService;
 
 import java.util.List;
@@ -20,7 +20,14 @@ public class JavaQuestionServiceTest {
     void setUp() {
         javaQuestionService = new JavaQuestionService();
     }
-//    getAll  tested in other methods
+//    getAll tested in other methods
+
+    @Test
+    public void testAdd_whenQuestionEqualsAnswer_thenThrowException() {
+        String test = "test";
+
+        Assertions.assertThrows(IncorrectValueException.class, () -> javaQuestionService.add(test, test));
+    }
 
     @Test
     public void testAdd_whenValidValues_thenQuestionAdded() {
@@ -39,7 +46,7 @@ public class JavaQuestionServiceTest {
         String question = null;
         String answer = "testAnswer";
 
-        Assertions.assertThrows(IllegalArgumentException.class, () -> javaQuestionService.add(question, answer));
+        Assertions.assertThrows(IncorrectValueException.class, () -> javaQuestionService.add(question, answer));
     }
 
     @Test

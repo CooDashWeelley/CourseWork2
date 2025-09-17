@@ -2,8 +2,11 @@ package pro.sky.course2.ExaminerService.service;
 
 import org.springframework.stereotype.Service;
 import pro.sky.course2.ExaminerService.domain.Question;
+import pro.sky.course2.ExaminerService.exception.IncorrectValueException;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
 @Service
 public class JavaQuestionService implements QuestionService {
@@ -12,20 +15,21 @@ public class JavaQuestionService implements QuestionService {
 
     public JavaQuestionService() {
         this.questions = new ArrayList<>();
+        getFill();
     }
 
     @Override
     public void add(String question, String answer) {
-        if (question == null || answer == null) {
-            throw new IllegalArgumentException("no values specified");
+        if (question == null || answer == null || question.equals(answer)) {
+            throw new IncorrectValueException("no values specified");
         }
         questions.add(new Question(question, answer));
     }
 
     @Override
     public void add(Question question) {
-        if(question == null) {
-            throw new IllegalArgumentException("no values specified");
+        if (question == null) {
+            throw new IncorrectValueException("no values specified");
         }
         questions.add(question);
     }
@@ -43,5 +47,24 @@ public class JavaQuestionService implements QuestionService {
     @Override
     public Question getRandomQuestion() {
         return questions.get(random.nextInt(0, questions.size()));
+    }
+
+    public void getFill() {
+        questions.add(new Question("Что такое аннотация @Override в Java?",  "Аннотация @Override указывает, что метод переопределяет метод суперкласса. Она помогает избежать ошибок при опечатках в имени метода и является обязательной для корректного переопределения."));
+        questions.add(new Question("Как работает многопоточность в Java?",  "Многопоточность реализуется через класс Thread или интерфейс Runnable. Потоки могут выполняться параллельно, взаимодействовать через синхронизацию и механизмы межпоточного взаимодействия."));
+        questions.add(new Question("Что такое generics в Java?",  "Generics (обобщения) позволяют создавать классы, интерфейсы и методы, которые работают с различными типами данных без потери типобезопасности."));
+        questions.add(new Question("В чём разница между HashMap и HashTable?",  "HashMap — не синхронизирован, допускает null ключи и значения, более производительный\n" +
+                "\n" +
+                "HashTable — синхронизирован, не допускает null, менее производительный"));
+        questions.add(new Question("Что такое интерфейс в Java?",  "Интерфейс — это абстрактный тип, который содержит только сигнатуры методов и константы. Класс может реализовывать один или несколько интерфейсов." ));
+        questions.add(new Question("Как работает сборщик мусора в Java?",  "Сборщик мусора автоматически освобождает память от объектов, на которые больше нет ссылок. Он использует алгоритм маркировки и очистки (mark-and-sweep) и работает в фоновом режиме."));
+        questions.add(new Question("Что такое полиморфизм в Java?",  "Полиморфизм — это способность объекта обрабатывать данные разных типов через один и тот же интерфейс. Реализуется через переопределение методов и перегрузку методов."));
+        questions.add(new Question("Что такое final, finally и finalize в Java?",  "final — модификатор для переменных (значение нельзя изменить), методов (нельзя переопределить) и классов (нельзя наследовать)\n" +
+                "\n" +
+                "finally — блок кода, который выполняется всегда после try-catch\n" +
+                "\n" +
+                "finalize — метод, вызываемый перед удалением объекта сборщиком мусора"));
+        questions.add(new Question("В чём разница между ArrayList и LinkedList?",  "ArrayList — это реализация списка на основе массива, обеспечивает быстрый доступ по индексу (O(1)), но медленные операции вставки/удаления (O(n)). LinkedList — это реализация на основе двусвязного списка, обеспечивает быстрые операции вставки/удаления (O(1)), но медленный доступ по индексу (O(n))."));
+        questions.add(new Question("Что такое Java Virtual Machine (JVM)?",  "JVM — это виртуальная машина Java, которая позволяет выполнять Java-программы независимо от операционной системы. Она преобразует байт-код в машинный код конкретной платформы."));
     }
 }
