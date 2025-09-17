@@ -31,8 +31,8 @@ public abstract class QuestionRepository implements QuestionRepositoryInterface{
         questions.removeIf(e -> e.getQuestion().equals(question));
     }
 
-    public Question get(int amount) {
-        return questions.get(amount);
+    public Question get(int index) {
+        return questions.get(index);
     }
 
     public List<Question> getAll() {

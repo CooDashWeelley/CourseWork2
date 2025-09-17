@@ -13,7 +13,6 @@ public class JavaExaminerService implements ExaminerService {
 
     public JavaExaminerService(JavaQuestionService service) {
         this.service = service;
-
     }
 
     @Override
