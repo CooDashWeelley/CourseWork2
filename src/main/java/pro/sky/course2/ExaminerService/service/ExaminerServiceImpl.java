@@ -9,9 +9,9 @@ import java.util.List;
 
 @Service
 public class ExaminerServiceImpl implements ExaminerService {
-    private QuestionService questionService;
+    private QuestionServiceInterface questionService;
 
-    public ExaminerServiceImpl(QuestionService questionService) {
+    public ExaminerServiceImpl(QuestionServiceInterface questionService) {
         this.questionService = questionService;
     }
 

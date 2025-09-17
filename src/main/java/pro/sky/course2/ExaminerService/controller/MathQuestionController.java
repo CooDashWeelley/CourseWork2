@@ -5,16 +5,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import pro.sky.course2.ExaminerService.domain.Question;
-import pro.sky.course2.ExaminerService.service.JavaQuestionService;
+import pro.sky.course2.ExaminerService.service.MathQuestionService;
 
 import java.util.Collection;
 
-@RequestMapping("/exam/java")
 @RestController
-public class JavaQuestionController {
-    private JavaQuestionService service;
+@RequestMapping("/exam/math")
+public class MathQuestionController {
+    private MathQuestionService service;
 
-    public JavaQuestionController(JavaQuestionService service) {
+    public MathQuestionController(MathQuestionService service) {
         this.service = service;
     }
 
@@ -35,4 +35,6 @@ public class JavaQuestionController {
     public Collection<Question> getAll() {
         return service.getAll();
     }
+
+
 }

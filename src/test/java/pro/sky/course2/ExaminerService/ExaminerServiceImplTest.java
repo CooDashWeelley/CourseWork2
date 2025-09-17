@@ -12,7 +12,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import pro.sky.course2.ExaminerService.domain.Question;
 import pro.sky.course2.ExaminerService.exception.IllegalNumberOfQuestionException;
 import pro.sky.course2.ExaminerService.service.ExaminerServiceImpl;
-import pro.sky.course2.ExaminerService.service.QuestionService;
+import pro.sky.course2.ExaminerService.service.QuestionServiceInterface;
 
 import java.util.List;
 
@@ -21,7 +21,7 @@ public class ExaminerServiceImplTest {
     List<Question> testQuestions;
 
     @Mock
-    QuestionService questionService;
+    QuestionServiceInterface questionService;
 
     @InjectMocks
     ExaminerServiceImpl examinerService;

@@ -9,7 +9,7 @@ import pro.sky.course2.ExaminerService.exception.IllegalNumberOfQuestionExceptio
 import pro.sky.course2.ExaminerService.exception.IncorrectValueException;
 
 @ControllerAdvice
-public class JavaQuestionControllerAdvice {
+public class QuestionControllerAdvice {
     @ExceptionHandler(IllegalNumberOfQuestionException.class)
     public ResponseEntity<QuestionError> handleIllegalNumberOfQuestionException(IllegalNumberOfQuestionException e) {
         QuestionError questionError = new QuestionError("BAD_REQUEST", "illegal  number of  question");
