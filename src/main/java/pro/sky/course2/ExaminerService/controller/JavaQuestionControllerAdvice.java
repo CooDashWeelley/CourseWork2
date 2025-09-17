@@ -17,8 +17,8 @@ public class JavaQuestionControllerAdvice {
     }
 
     @ExceptionHandler(IncorrectValueException.class)
-    public ResponseEntity<QuestionError> handleIncorrectValueException(IncorrectValueException e)  {
-        QuestionError questionError =  new QuestionError("BAD_REQUEST", "Incorrect value");
+    public ResponseEntity<QuestionError> handleIncorrectValueException(IncorrectValueException e) {
+        QuestionError questionError = new QuestionError("BAD_REQUEST", "Incorrect value");
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(questionError);
     }
 }
